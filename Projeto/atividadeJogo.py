@@ -1,5 +1,5 @@
 import random
-tentativas = 0
+tentativas = 10
 
 primer_dig_control = 0
 segun_dig_control = 0
@@ -25,51 +25,38 @@ while (tentativas > 0):
     quarto_digito_tentativa = (num_digitado // 1000) % 10
 
     if (num_digitado < 1000):
-        if (num_digitado > 9999):
-            print(f"O número {num_digitado} é inválido!")
-            print(f"Essa tentativa não será considerada.")
-            print(f"Por favor, tente novamente: ")
-        else:
-            print(f"O número {num_digitado} é inválido!")
-            print(f"Essa tentativa não será considerada.")
-            print(f"Por favor, tente novamente: ")
-    else:
         print(f"O número {num_digitado} é inválido!")
         print(f"Essa tentativa não será considerada.")
         print(f"Por favor, tente novamente: ")
-
-    if (primer_dig_control != 0):
+        tentativas += 1
+    elif (num_digitado > 9999):
+            print(f"O número {num_digitado} é inválido!")
+            print(f"Essa tentativa não será considerada.")
+            print(f"Por favor, tente novamente: ")
+            tentativas += 1
+        
+    if (primer_dig_control == 0):
         if (primeiro_digito_tentativa == primeiro_digito):
             primeiro_digito_correto = primeiro_digito_tentativa
             primer_dig_control += 1
-            tentativas -= 1
             acertos += 1
-        else:
-            tentivas -= 1
-    if (segun_dig_control != 0):
+    if (segun_dig_control == 0):
         if (segundo_digito_tentativa == segundo_digito):
             segundo_digito_correto = segundo_digito
             segun_dig_control += 1
-            tentativas -= 1
             acertos += 1
-        else:
-            tentativas -= 1
-    if (ter_dig_control != 0):
+    if (ter_dig_control == 0):
         if (terceiro_digito_tentativa == terceiro_digito):
             terceiro_digito_control = terceiro_digito
             ter_dig_control += 1
-            tentativas -= 1
             acertos += 1
-        else:
-            tentativas -= 1
-    if (quar_dig_control != 0):
+    if (quar_dig_control == 0):
         if (quarto_digito_tentativa == quarto_digito):
             quarto_digito_control = quarto_digito
             quar_dig_control += 1
-            tentativas -= 1
             acertos += 1
-        else:
-            tentativas -= 1
+
+    tentativas -= 1
 
     if (acertos == 0):
         print(f"Você não acertou nenhum digto.")
