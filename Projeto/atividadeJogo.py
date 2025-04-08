@@ -1,7 +1,6 @@
 import random
 numero_aleatorio = random.randint(1000,9999)
 
-# Divisão dos 4 digitos em variáveis separadas
 primeiro_digito = numero_aleatorio % 10
 segundo_digito = (numero_aleatorio // 10) % 10
 terceiro_digito = (numero_aleatorio // 100) % 10
@@ -9,22 +8,11 @@ quarto_digito = (numero_aleatorio // 1000) % 10
 
 tentativas = 10
 vitoria = 0
-voltarJogo = 0
 dica_control = 0
-dica1_control = 0
-dica2_control = 0
-dica3_control = 0
-dica4_control = 0
 primer_dig_control = 0
 segun_dig_control = 0
 ter_dig_control = 0
 quar_dig_control = 0
-
-# Não trabalhar com string
-# Digito1 = "_"
-# Digito2 = "_"
-# Digito3 = "_"
-# Digito4 = "_"
 
 print(f"\n// Jogo da Adivinhação //")
 print(f"O número gerado está entre 1000 e 9999")
@@ -34,10 +22,10 @@ while (vitoria < 4):
     while (tentativas > 0):
         num_digitado = int(input(f"< Digite um valor >: "))
         acertos = 0
-        quarto_digito_tentativa = num_digitado % 10
-        terceiro_digito_tentativa = (num_digitado // 10) % 10
-        segundo_digito_tentativa = (num_digitado // 100) % 10
-        primeiro_digito_tentativa = (num_digitado // 1000) % 10
+        primeiro_digito_tentativa = num_digitado % 10
+        segundo_digito_tentativa = (num_digitado // 10) % 10
+        terceiro_digito_tentativa = (num_digitado // 100) % 10
+        quarto_digito_tentativa = (num_digitado // 1000) % 10
 
         if (num_digitado < 1000):
             print(f"\n// ERRO! //")
@@ -53,36 +41,6 @@ while (vitoria < 4):
             tentativas += 1
         else:
             print("\nSeu número é:",end=" ")
-            if (primer_dig_control == 0):
-                if (primeiro_digito_tentativa == primeiro_digito):
-                    print(primeiro_digito,end=" ")
-                    primer_dig_control += 1
-                    acertos += 1
-                    vitoria += 1
-                else:
-                    print("_",end=" ")
-            else:
-                print(primeiro_digito,end=" ")
-            if (segun_dig_control == 0):
-                if (segundo_digito_tentativa == segundo_digito):
-                    print(segundo_digito,end=" ")
-                    segun_dig_control += 1
-                    acertos += 1
-                    vitoria += 1
-                else:
-                    print("_",end=" ")
-            else:
-                print(segun_dig_control,end=" ")
-            if (ter_dig_control == 0):
-                if (terceiro_digito_tentativa == terceiro_digito):
-                    print(terceiro_digito,end=" ")
-                    ter_dig_control += 1
-                    acertos += 1
-                    vitoria += 1
-                else:
-                    print("_",end=" ")
-            else:
-                print(terceiro_digito,end=" ")
             if (quar_dig_control == 0):
                 if (quarto_digito_tentativa == quarto_digito):
                     print(quarto_digito,end=" ")
@@ -93,6 +51,36 @@ while (vitoria < 4):
                     print("_",end=" ")
             else:
                 print(quarto_digito,end=" ")
+            if (ter_dig_control == 0):
+                if (terceiro_digito_tentativa == terceiro_digito):
+                    print(terceiro_digito,end=" ")
+                    ter_dig_control += 1
+                    acertos += 1
+                    vitoria += 1
+                else:
+                    print("_",end=" ")
+            else:
+                print(terceiro_digito,end=" ")
+            if (segun_dig_control == 0):
+                if (segundo_digito_tentativa == segundo_digito):
+                    print(segundo_digito,end=" ")
+                    segun_dig_control += 1
+                    acertos += 1
+                    vitoria += 1
+                else:
+                    print("_",end=" ")
+            else:
+                print(segundo_digito,end=" ")
+            if (primer_dig_control == 0):
+                if (primeiro_digito_tentativa == primeiro_digito):
+                    print(primeiro_digito,end=" ")
+                    primer_dig_control += 1
+                    acertos += 1
+                    vitoria += 1
+                else:
+                    print("_",end=" ")
+            else:
+                print(primeiro_digito,end=" ")
 
         tentativas -= 1
 
@@ -148,7 +136,32 @@ while (vitoria < 4):
                     print(f"O quarto digito é maior ou igual a 5.")
         ctrl_dica = 1
 
-        if (tentativas == 0):
+        if (vitoria >= 4):
+            print(f"\n// Fim de Jogo //")
+            print(f"Você ganhou o jogo!")
+            print(f"Código: {numero_aleatorio}")
+            print(f"Em {10 - tentativas} tentativas")
+            voltarJogo = int(input("Você quer jogar novamente? Digite \"1\" para continuar: "))
+            if (voltarJogo == 1):
+                tentativas = 10
+                vitoria = 0
+                voltarJogo = 0
+                primer_dig_control = 0
+                segun_dig_control = 0
+                ter_dig_control = 0
+                quar_dig_control = 0
+                numero_aleatorio = random.randint(1000,9999)
+                primeiro_digito = numero_aleatorio % 10
+                segundo_digito = (numero_aleatorio // 10) % 10
+                terceiro_digito = (numero_aleatorio // 100) % 10
+                quarto_digito = (numero_aleatorio // 1000) % 10
+                print(f"\n// Jogo da Adivinhação //")
+                print(f"O número gerado está entre 1000 e 9999")
+                print(f"Você possui 10 tentativas para encontrar o número")
+            else:
+                tentativas = 0
+                vitoria = 5
+        elif (tentativas == 0):
             print(f"\n// Fim de Jogo //")
             print(f"Você perdeu o jogo por falta de tentativas.")
             print(f"O código era: {numero_aleatorio}")
@@ -156,55 +169,19 @@ while (vitoria < 4):
             if (voltarJogo == 1):
                 tentativas = 10
                 vitoria = 0
-                voltarJogo = ""
+                voltarJogo = 0
                 primer_dig_control = 0
                 segun_dig_control = 0
                 ter_dig_control = 0
                 quar_dig_control = 0
-                Digito1 = "_"
-                Digito2 = "_"
-                Digito3 = "_"
-                Digito4 = "_"
-
                 numero_aleatorio = random.randint(1000,9999)
                 primeiro_digito = numero_aleatorio % 10
                 segundo_digito = (numero_aleatorio // 10) % 10
                 terceiro_digito = (numero_aleatorio // 100) % 10
                 quarto_digito = (numero_aleatorio // 1000) % 10
-                print(f"// Jogo da Adivinhação //")
+                print(f"\n// Jogo da Adivinhação //")
                 print(f"O número gerado está entre 1000 e 9999")
                 print(f"Você possui 10 tentativas para encontrar o número")
-            else:
-                tentativas = 0
-                vitoria = 5
-        elif (vitoria == 4):
-            print(f"\n// Fim de Jogo //")
-            print(f"Você ganhou o jogo!")
-            print(f"Código: {numero_aleatorio}")
-            print(f"Em {10 - tentativas} tentativas")
-            voltarJogo = int(input("Você quer jogar novamente? \nDigite \"1\" para continuar: "))
-            print("\n")
-            if (voltarJogo == 1):
-                tentativas = 10
-                vitoria = 0
-                voltarJogo = ""
-                primer_dig_control = 0
-                segun_dig_control = 0
-                ter_dig_control = 0
-                quar_dig_control = 0
-                Digito1 = "_"
-                Digito2 = "_"
-                Digito3 = "_"
-                Digito4 = "_"
-
-                numero_aleatorio = random.randint(1000,9999)
-                primeiro_digito = numero_aleatorio % 10
-                segundo_digito = (numero_aleatorio // 10) % 10
-                terceiro_digito = (numero_aleatorio // 100) % 10
-                quarto_digito = (numero_aleatorio // 1000) % 10
-                print(f"// Jogo da Adivinhação //")
-                print(f"O número gerado está entre 1000 e 9999")
-                print(f"Você possui 10 tentativas para encontrar o número")           
             else:
                 tentativas = 0
                 vitoria = 5
