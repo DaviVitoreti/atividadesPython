@@ -95,45 +95,45 @@ while (vitoria < 4):
                 if (primeiro_digito%2 == 0):
                     print(f"\n// DICA! //")
                     print(f"O primeiro digito é PAR.")
-                elif (primeiro_digito < 5):
+                elif (primeiro_digito > 5):
                     print(f"\n// DICA! //")
-                    print(f"O primeiro digito é menor que 5.")
+                    print(f"O primeiro digito é maior que 5.")
                 else:
                     print(f"\n// DICA! //")
-                    print(f"O primeiro digito é maior ou igual a 5.")
+                    print(f"O primeiro digito é menor ou igual a 5.")
             if (segun_dig_control == 0) and (dica_control == 0):
                 dica_control += 1
                 if (segundo_digito%2 == 0):
                     print(f"\n// DICA! //")
                     print(f"O segundo digito é PAR.")
-                elif (segundo_digito < 5):
+                elif (segundo_digito > 5):
                     print(f"\n// DICA! //")
-                    print(f"O segundo digito é menor que 5.")
+                    print(f"O segundo digito é maior que 5.")
                 else:
                     print(f"\n// DICA! //")
-                    print(f"O segundo digito é maior ou igual a 5.")
+                    print(f"O segundo digito é menor ou igual a 5.")
             if (ter_dig_control == 0) and (dica_control == 0):
                 dica_control += 1
                 if (terceiro_digito%2 == 0):
                     print(f"\n// DICA! //")
                     print(f"O terceiro digito é PAR.")
-                elif (terceiro_digito < 5):
+                elif (terceiro_digito > 5):
                     print(f"\n// DICA! //")
-                    print(f"O terceiro digito é menor que 5.")
+                    print(f"O terceiro digito é maior que 5.")
                 else:
                     print(f"\n// DICA! //")
-                    print(f"O terceiro digito é maior ou igual a 5.")
+                    print(f"O terceiro digito é inferior ou igual a 5.")
             if (quar_dig_control == 0) and (dica_control == 0):
                 dica_control += 1
                 if (quarto_digito%2 == 0):
                     print(f"\n// DICA! //")
                     print(f"O quarto digito é PAR.")
-                elif (quarto_digito < 5):
+                elif (quarto_digito > 5):
                     print(f"\n// DICA! //")
-                    print(f"O quarto digito é menor que 5.")
+                    print(f"O quarto digito é maior que 5.")
                 else:
                     print(f"\n// DICA! //")
-                    print(f"O quarto digito é maior ou igual a 5.")
+                    print(f"O quarto digito é menor ou igual a 5.")
         ctrl_dica = 1
 
         if (vitoria >= 4):
