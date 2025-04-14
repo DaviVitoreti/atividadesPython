@@ -1,12 +1,13 @@
+print(f"// Calculadora de Nota //")
 num_alunos = int(input("Digite a quantidade de alunos que serão inseridos: "))
 boletim_sala = []
 
-for i in range(num_alunos):  
+for x in range(num_alunos):  
     boletim_aluno = []
     notaT = []
     notaP = []
     notaMT_MP = []
-    nome = input(f"\nDigite o nome do {i+1}° aluno: ")
+    nome = input(f"\nDigite o nome do {x+1}° aluno: ")
     notaT1 = float(input("Digite a nota da prova teórica T1: "))
     notaT2 = float(input("Digite a nota da prova teórica T2: "))
     notaP1 = float(input("Digite a nota do projeto P1: "))
@@ -40,24 +41,24 @@ for i in range(num_alunos):
 print("\n// Boletim da Sala //")
 print("Nome\tT1\tT2\tP1\tP2\tMT\tMP\tMF")
 for x in range(num_alunos):
-    print(f"{boletim_sala[x][0]}\t{boletim_sala[x][1][0]}\t{boletim_sala[x][1][1]}\t{boletim_sala[x][2][0]}\t{boletim_sala[x][2][1]}\t{boletim_sala[x][3][0]}\t{boletim_sala[x][3][1]}\t{boletim_sala[x][4]}")
+    print(f"{boletim_sala[x][0]}\t{boletim_sala[x][1][0]:.2f}\t{boletim_sala[x][1][1]:.2f}\t{boletim_sala[x][2][0]:.2f}\t{boletim_sala[x][2][1]:.2f}\t{boletim_sala[x][3][0]:.2f}\t{boletim_sala[x][3][1]:.2f}\t{boletim_sala[x][4]:.2f}")
 
-buscar_nome = 1
-busca_control = 1
+buscar_nome = "1"
 print("\n// Buscar Aluno //")
 print("Digite o nome do aluno para buscar o seu boletim\nCaso queira sair, digite \"0\"")
 while (buscar_nome != "0"):
     buscar_nome = input("< Nome >: ")
     buscar_nome = buscar_nome.title()
+    busca_control = 0
     for x in range(num_alunos):
         if (boletim_sala[x][0] == buscar_nome):
-            print(f"\n// Boletim de {boletim_sala[x][0]} //")
+            print(f"// Boletim de {boletim_sala[x][0]} //")
             print("Nome\tT1\tT2\tP1\tP2\tMT\tMP\tMF")
-            print(f"{boletim_sala[x][0]}\t{boletim_sala[x][1][0]}\t{boletim_sala[x][1][1]}\t{boletim_sala[x][2][0]}\t{boletim_sala[x][2][1]}\t{boletim_sala[x][3][0]}\t{boletim_sala[x][3][1]}\t{boletim_sala[x][4]}")
+            print(f"{boletim_sala[x][0]}\t{boletim_sala[x][1][0]:.2f}\t{boletim_sala[x][1][1]:.2f}\t{boletim_sala[x][2][0]:.2f}\t{boletim_sala[x][2][1]:.2f}\t{boletim_sala[x][3][0]:.2f}\t{boletim_sala[x][3][1]:.2f}\t{boletim_sala[x][4]:.2f}\n")
         else:
             busca_control += 1
-    if (buscar_nome == num_alunos):
-        print("Não possível encontrar o aluno.")
+    if (busca_control == num_alunos):
+        print("Não possível encontrar o aluno.\n")
 
 notaMF_maior = [0, -1]
 menorMF = [0, 0]
