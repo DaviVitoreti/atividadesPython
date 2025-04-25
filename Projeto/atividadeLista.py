@@ -1,6 +1,3 @@
-# falta contruir o menu de opções, ver atividade no canvas
-# Arrumar o menu de opções
-
 print(f"// Calculadora de Nota //")
 num_alunos = int(input("Digite a quantidade de alunos que serão inseridos: "))
 cont_MFmaior5 = 0
@@ -26,14 +23,17 @@ for x in range(num_alunos):
     notaMT = 0.4*notaT1 + 0.6*notaT2
     notaMP = (notaP1+notaP2)/2
 
-    if (notaMT > 5) and (notaMP > 5):
-        notaMF = 0.3*notaMP + 0.7*notaMT
-        cont_MFmaior5 += 1
-    else:
-        if (notaMT > notaMP):
-            notaMF = notaMP
+    if (notaMT > 5):
+        if (notaMP > 5):
+            notaMF = 0.3*notaMP + 0.7*notaMT
+            cont_MFmaior5 += 1
         else:
-            notaMF = notaMT 
+            notaMF = notaMP
+    else:
+        if (notaMT < notaMP):
+            notaMF = notaMT
+        else:
+            notaMF = notaMP 
 
     boletim_aluno.append(nome)
     notaT.append(notaT1)
@@ -103,7 +103,7 @@ while (menu != "Sair"):
                             else:
                                 busca_control += 1
                     if (busca_control == num_alunos):
-                        print("Não possível encontrar o aluno.\nVerifique se digitou o nome corretamente.")
+                        print("Não foi possível encontrar o aluno.\nVerifique se digitou o nome corretamente.")
             elif (menu == "3"):
                 print(f"O aluno(a) {notaMF_maior[0]} obteve a maior Média Final, sendo: {notaMF_maior[1]:.2f}\n")
             elif (menu == "4"):
