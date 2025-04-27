@@ -1,11 +1,12 @@
-print(f"// Calculadora de Nota //")
-num_alunos = int(input("Digite a quantidade de alunos que serão inseridos: "))
 cont_MFmaior5 = 0
 buscar_nome = ""
 menu = ""
 boletim_sala = []
 notaMF_maior = ["", -1]
 menorMF = ["", 0]
+
+print(f"// Calculadora de Nota //")
+num_alunos = int(input("Digite a quantidade de alunos que serão inseridos: "))
 
 for x in range(num_alunos):
     boletim_aluno = []
@@ -62,53 +63,59 @@ for x in range(num_alunos):
 perc_MFmaior5 = (cont_MFmaior5 / num_alunos) * 100
 
 print("\n// Menu de Opções //")
-print("1. Um boletim da sala, contendo de cada aluno o nome, Média Teórica (MT), Média Prática (MP) e Média Final (MF).")
+print("1. Um boletim da sala, contendo o nome de cada aluno, Média Teórica (MT), Média Prática (MP) e Média Final (MF).")
 print("2. Buscar o boletim de um aluno em específico.")
 print("3. O aluno com a maior Média Final (MF).")
 print("4. O aluno com a menor Média Final (MF).")
 print("5. O percentual de Média Final (MF) superior a 5,0.")
-print("\nDigite o número correspondente a cada opção para buscar.\nDigite \"Sair\" para encerrar o programa.")
-print("Digite \"Menu\" para consultar o menu de opções novamente.")
+print("\nDigite o número correspondente a cada opção para buscar.")
+print("\nDigite \"Menu\" para consultar o menu de opções novamente.")
+print("Digite \"Sair\" para encerrar o programa.")
 while (menu != "Sair"):
     menu = input("< Menu >: ")
     menu = menu.title()
-
     if (menu != "Sair"):
         if (menu == "Menu"):
             print("\n// Menu de Opções //")
-            print("1. Um boletim da sala, contendo de cada aluno o nome, Média Teórica (MT), Média Prática (MP) e Média Final (MF).")
+            print("1. Um boletim da sala, contendo o nome de cada aluno, Média Teórica (MT), Média Prática (MP) e Média Final (MF).")
             print("2. Buscar o boletim de um aluno em específico.")
             print("3. O aluno com a maior Média Final (MF).")
             print("4. O aluno com a menor Média Final (MF).")
             print("5. O percentual de Média Final (MF) superior a 5,0.")
+        elif (menu == "1"):
+            print("\n// Boletim da Sala //")
+            for x in range(num_alunos):
+                print(f"-- {boletim_sala[x][0]} --")
+                print(f"(MT): {boletim_sala[x][3][0]:.2f}")
+                print(f"(MP): {boletim_sala[x][3][1]:.2f}")
+                print(f"(MF): {boletim_sala[x][4]:.2f}\n")
+        elif (menu == "2"):
+            print("\n// Buscar Aluno //")
+            print("Digite o nome do aluno para buscar o seu boletim\nCaso queira sair, digite \"Sair\"")
+            while (buscar_nome != "Sair"):
+                buscar_nome = input("< Nome >: ")
+                buscar_nome = buscar_nome.title()
+                busca_control = 0
+                if (buscar_nome != "Sair"):
+                    for x in range(num_alunos):
+                        if (boletim_sala[x][0] == buscar_nome):
+                            print(f"\n// Boletim de {boletim_sala[x][0]} //")
+                            print(f"(T1): {boletim_sala[x][1][0]:.2f}")
+                            print(f"(T2): {boletim_sala[x][1][1]:.2f}")
+                            print(f"(P1): {boletim_sala[x][2][0]:.2f}")
+                            print(f"(P2): {boletim_sala[x][2][1]:.2f}")
+                            print(f"(MT): {boletim_sala[x][3][0]:.2f}")
+                            print(f"(MP): {boletim_sala[x][3][1]:.2f}")
+                            print(f"(MF): {boletim_sala[x][4]:.2f}\n")
+                        else:
+                            busca_control += 1
+                if (busca_control == num_alunos):
+                    print("Não foi possível encontrar o aluno.\nVerifique se digitou o nome corretamente.")
+        elif (menu == "3"):
+            print(f"O aluno(a) {notaMF_maior[0]} obteve a maior Média Final, sendo: {notaMF_maior[1]:.2f}\n")
+        elif (menu == "4"):
+            print(f"O aluno(a) {menorMF[0]} obteve a menor Média Final, sendo: {menorMF[1]:.2f}\n")
+        elif (menu == "5"):
+            print(f"O percentual de alunos com Média Final superior a 5 é: {perc_MFmaior5:.2f}%\n")
         else:
-            if (menu == "1"):
-                print("\n// Boletim da Sala //")
-                print("Nome\tMT\tMP\tMF")
-                for x in range(num_alunos):
-                    print(f"{boletim_sala[x][0]}\t{boletim_sala[x][3][0]:.2f}\t{boletim_sala[x][3][1]:.2f}\t{boletim_sala[x][4]:.2f}")
-            elif (menu == "2"):
-                print("\n// Buscar Aluno //")
-                print("Digite o nome do aluno para buscar o seu boletim\nCaso queira sair, digite \"Sair\"")
-                while (buscar_nome != "Sair"):
-                    buscar_nome = input("< Nome >: ")
-                    buscar_nome = buscar_nome.title()
-                    busca_control = 0
-                    if (buscar_nome != "Sair"):
-                        for x in range(num_alunos):
-                            if (boletim_sala[x][0] == buscar_nome):
-                                print(f"\n// Boletim de {boletim_sala[x][0]} //")
-                                print("Nome\tT1\tT2\tP1\tP2\tMT\tMP\tMF")
-                                print(f"{boletim_sala[x][0]}\t{boletim_sala[x][1][0]:.2f}\t{boletim_sala[x][1][1]:.2f}\t{boletim_sala[x][2][0]:.2f}\t{boletim_sala[x][2][1]:.2f}\t{boletim_sala[x][3][0]:.2f}\t{boletim_sala[x][3][1]:.2f}\t{boletim_sala[x][4]:.2f}\n")
-                            else:
-                                busca_control += 1
-                    if (busca_control == num_alunos):
-                        print("Não foi possível encontrar o aluno.\nVerifique se digitou o nome corretamente.")
-            elif (menu == "3"):
-                print(f"O aluno(a) {notaMF_maior[0]} obteve a maior Média Final, sendo: {notaMF_maior[1]:.2f}\n")
-            elif (menu == "4"):
-                print(f"O aluno(a) {menorMF[0]} obteve a menor Média Final, sendo: {menorMF[1]:.2f}\n")
-            elif (menu == "5"):
-                print(f"O percentual de alunos com Média Final superior a 5 é: {perc_MFmaior5:.2f}%\n")
-            else:
-                print("Opção inválida, por favor, tente novamente\n")
+            print("Opção inválida. Por favor, tente novamente\n")
